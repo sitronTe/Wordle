@@ -41,3 +41,20 @@ std::string Wordle::contains_print(char c)
 
     return ss.str();
 }
+
+std::string Wordle::get_rules()
+{
+    std::stringstream ss;
+    ss << "Worlde" << std::endl;
+    ss << "Guess a 5 letter word!" << std::endl;
+    ss << "Correctly placed characters will be in ";
+    for (const char& c: "green") { ss << Wordle::exact_print(c); }
+    ss << std::endl;
+    ss << "Letters in the word that is incorrectly placed will be in ";
+    for (const char& c: "yellow") { ss << Wordle::contains_print(c); }
+    ss << std::endl;
+    ss << "You have 6 guesses!" << std::endl;
+    ss << "Note: Incorrectly placed letters will not care about repeated letters" << std::endl;
+
+    return ss.str();
+}

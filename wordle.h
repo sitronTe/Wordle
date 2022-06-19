@@ -14,6 +14,8 @@ class Wordle
 
   GuessResponse guess(const std::string& word);
 
+  static std::string get_rules();
+
  private:
   static std::string get_word(const std::string& filename);
   static std::string exact_print(char c);
