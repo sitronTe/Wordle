@@ -18,5 +18,12 @@ int main()
         std::cout << "You guessed: " << response.second << std::endl;
     } while (wordle.has_guesses_left() && !response.first);
 
-    // ...
+    std::cout << "This was the end of the game" << std::endl;
+    if (response.first) {
+        std::cout << "YOU WON!" << std::endl << "Congratulations!" << std::endl;
+    } else {
+        std::cout << "Unforetunately you used up all your guesses before getting it correct" << std::endl;
+        std::cout << "Better luck next time" << std::endl;
+    }
+    std::cout << "Rerun the game to try again!" << std::endl;
 }
