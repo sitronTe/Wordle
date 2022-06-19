@@ -58,3 +58,11 @@ std::string Wordle::get_rules()
 
     return ss.str();
 }
+
+bool Wordle::is_valid_guess(const std::string& word) {
+    return word.length() == secret_word.length();
+}
+
+bool Wordle::contains_char(char c) {
+    return secret_word.find(c) != std::string::npos;
+}
