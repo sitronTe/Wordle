@@ -3,10 +3,23 @@
 GuessResponse Wordle::guess(const std::string& word)
 {
     if (is_valid_guess(word)) {
+
+        std::stringstream ss;
+        bool all_correct = true;
         guesses_left--;
-        return {false, word};
+
+        for (int ii = 0; ii < secret_word.length(); ii++) {
+            char gc = word.at(ii);
+            bool correct = secret_word.at(ii) == gc;
+            all_correct &= correct;
+
+            if (correct) { ss << exact_print(gc); }
+            else if (contains_char(gc)) { ss << contains_print(gc); }
+            else { ss << gc; }
+        }
+
+        return {all_correct, ss.str()};
     }
-    // ...
     return {false, "INVALID GUESS"};
 }
 
