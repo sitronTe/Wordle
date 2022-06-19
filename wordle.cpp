@@ -8,7 +8,7 @@ GuessResponse Wordle::guess(const std::string& word)
 
 std::string Wordle::get_word(const std::string& filename)
 {
-    std::srand(std::time(nullptr));
+    std::srand(time(nullptr));
 
     std::vector<std::string> result;
     std::ifstream file(filename);
