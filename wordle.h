@@ -10,11 +10,14 @@ class Wordle
 {
  public:
   explicit Wordle(const std::string& dictionary)
-  : secret_word(get_word(dictionary)) {}
+  : secret_word(get_word(dictionary)), guesses_left(ALLOWED_GUESSES) {}
 
   GuessResponse guess(const std::string& word);
 
   bool is_valid_guess(const std::string& word);
+  bool has_guesses_left();
+
+  static const int ALLOWED_GUESSES = 6;
 
   static std::string get_rules();
 
@@ -26,4 +29,5 @@ class Wordle
   bool contains_char(char c);
 
   std::string secret_word;
+  int guesses_left;
 };

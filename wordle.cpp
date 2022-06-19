@@ -2,8 +2,12 @@
 
 GuessResponse Wordle::guess(const std::string& word)
 {
+    if (is_valid_guess(word)) {
+        guesses_left--;
+        return {false, word};
+    }
     // ...
-    return {false, word};
+    return {false, "INVALID GUESS"};
 }
 
 std::string Wordle::get_word(const std::string& filename)
@@ -53,16 +57,20 @@ std::string Wordle::get_rules()
     ss << "Letters in the word that is incorrectly placed will be in ";
     for (const char& c: "yellow") { ss << Wordle::contains_print(c); }
     ss << std::endl;
-    ss << "You have 6 guesses!" << std::endl;
+    ss << "You have " << ALLOWED_GUESSES << " guesses!" << std::endl;
     ss << "Note: Incorrectly placed letters will not care about repeated letters" << std::endl;
 
     return ss.str();
 }
 
 bool Wordle::is_valid_guess(const std::string& word) {
-    return word.length() == secret_word.length();
+    return has_guesses_left() && (word.length() == secret_word.length());
 }
 
 bool Wordle::contains_char(char c) {
     return secret_word.find(c) != std::string::npos;
+}
+
+bool Wordle::has_guesses_left() {
+    return guesses_left > 0;
 }
