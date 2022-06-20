@@ -14,12 +14,6 @@ would be `stuck` back, but with the `s` rendered in GREEN (because it's an exact
 the `t` rendered in YELLOW (partial match). The others can just be your standard terminal
 text color, or whatever you prefer!
 
-### Code
-
-Try not to spend more than one hour. I've included a skeleton of a program to get you
-started, but you are free to change anything if you'd like. Create utility functions as
-you see fit. Have fun!
-
 ### Running
 
 ```bash
